@@ -1,26 +1,36 @@
 import React, { Component } from 'react'
 
-class ComponentA extends Component {
+class ComponenteA extends Component {
     render() {
         return <p>Componente A</p>
     }
 
 }
 
-class ComponentB extends Component {
+class ComponenteB extends Component {
     render() {
         return <p>Componente B</p>
     }
 
 }
+
+function useConditionalRendering (mostarA) {
+    if (mostarA) {
+        return <ComponenteA />
+    }
+     return <ComponenteB />
+}
 export default class ConditionalSection extends Component {
+    constructor() {
+        super()
+        this.state = { mostarA: true }
+    }
     render () {
-        return {
+        return (
             <div>
                 <h4>Conditional Rendering</h4>
-                <ComponenteA />
-                <ComponenteB />
-            </div>
-        }
+                {useConditionalRendering(this.state.mostarA)}
+            </div>        
+        )
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ConditionalSection from './sections/conditional'
 import logo from './logo.svg';
 import './App.css';
 
@@ -86,6 +87,7 @@ class App extends Component{
   render() {
     return (
       <div className="App">
+        <ConditionalSection />
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <Title text='Otro titulo desde props'/>
