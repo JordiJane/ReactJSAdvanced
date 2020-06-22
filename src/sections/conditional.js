@@ -1,35 +1,49 @@
 import React, { Component } from 'react'
 
-class ComponenteA extends Component {
+class LoginButton extends Component {
     render() {
-        return <p>Componente A</p>
+        return <button>Iniciar Sesión</button>
     }
 
 }
 
-class ComponenteB extends Component {
+class LogoutButton extends Component {
     render() {
-        return <p>Componente B</p>
+        return (
+            <div>
+                <p>Bienvenido, usuario </p>
+                <button>Cerrar sesión</button>
+            </div>
+        )
     }
 
 }
 
 function useConditionalRendering (mostarA) {
     if (mostarA) {
-        return <ComponenteA />
+        return <LoginButton />
     }
-     return <ComponenteB />
+     return <LogoutButton />
 }
 export default class ConditionalSection extends Component {
     constructor() {
         super()
-        this.state = { mostarA: true }
+        this.state = { isUserLogged: true }
     }
     render () {
+        //Constante
+        //const conditionalComponent = useConditionalRendering(this.state.mostarA)
+        //Ternària
+        // const conditionalComponent = this.state.mostarA 
+        //     ? <ComponenteA /> 
+        //     : <ComponenteB />
         return (
             <div>
                 <h4>Conditional Rendering</h4>
-                {useConditionalRendering(this.state.mostarA)}
+                {this.state.isUserLogged
+                    ? <LogoutButton />
+                    : <LoginButton/>
+                }
             </div>        
         )
     }
